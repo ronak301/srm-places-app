@@ -1,21 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+import Card from './src/components/Card';
+import placesData from './src/static/places.json';
+import PlacesList from './src/components/PlacesList';
+import PlaceDetail from './src/components/PlaceDetail';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const AppNavigator = createStackNavigator({
+  placesList: {
+    screen: PlacesList,
+    navigationOptions: {
+      title: 'Explore',
+    },
+  },
+  placeDetail: {
+    screen: PlaceDetail,
+    navigationOptions: {
+      title: 'Explore',
+    },
   },
 });
+
+export default createAppContainer(AppNavigator);
